@@ -23,7 +23,7 @@ os.environ['SDL_VIDEO_CENTERED'] = '1'
 
 WIDTH = 800
 HEIGHT = 480
-TITLE = "Substitute Soccer"
+TITLE = "WOOFBALL 3000;GX/V-0"
 
 HALF_WINDOW_W = WIDTH / 2
 
@@ -347,7 +347,7 @@ class Ball(MyActor):
 
             if do_shoot:
                 # play a random kick effect
-                game.play_sound("kick", 4)
+                game.play_sound("bark", 4)
 
                 if target:
                     # If there is a targetable player or goal, kick towards it
@@ -703,12 +703,12 @@ class Game:
         try:
             if self.teams[0].human():
                 # Beginning a game with at least 1 human player
-                music.theme.fadeout(1)
+                sounds.theme.fadeout(1)
                 sounds.crowd.play(-1)
                 sounds.start.play()
             else:
                 # No players - we must be on the menu. Play title music.
-                music.theme.play(-1)
+                sounds.theme.play(-1)
                 sounds.crowd.stop()
         except Exception:
             # Ignore sound errors
@@ -775,7 +775,7 @@ class Game:
             self.reset()
 
         elif self.score_timer < 0 and abs(self.ball.vpos.y - HALF_LEVEL_H) > HALF_PITCH_H:
-            game.play_sound("goal", 2)
+            game.play_sound("goal", 3)
 
             self.scoring_team = 0 if self.ball.vpos.y < HALF_LEVEL_H else 1
             self.teams[self.scoring_team].score += 1
